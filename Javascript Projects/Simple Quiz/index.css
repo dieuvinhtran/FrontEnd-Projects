@@ -1,0 +1,29 @@
+.quizBox{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.questionBox{
+    display:flex; 
+    flex-wrap: wrap;   
+    border: 2px solid black;
+    margin: 10px 0 0 10px;
+    padding: 0 10px 10px 10px;
+    height: 50%;
+    width: 50%;
+}
+
+.question{
+    width:100%;
+}
+
+.answer{
+    flex:1;
+}
+
+.submitButton{
+    width:50%;
+    margin: 10px 0 0 10px;
+}
