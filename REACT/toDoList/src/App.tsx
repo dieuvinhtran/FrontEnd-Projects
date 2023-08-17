@@ -8,17 +8,32 @@ function App() {
   const headings = ["#", "Task Name", "Status", "Edit", "Remove"];
 
   const [counter, setCounter] = useState(1);
+  const [editable, setEditable] = useState(false);
   const [row, setRow] = React.useState<string[]>([]);
 
-  const onClickHandler = () => {
+  const onAddTask = () => {
     setCounter(counter + 1);
     setRow([...row, "Task " + counter]);
+  };
+
+  const onEdit = (index: number) => {
+    setEditable(true);
+  };
+
+  const onChange = (data: string, nV: string) => {
+    data = nV;
+  };
+
+  const onDelete = (index: number) => {
+    let rows = row;
+    rows.splice(index, 1);
+    setRow([...rows]);
   };
 
   return (
     <>
       <h1>To-Do-List</h1>
-      <Button onClick={onClickHandler} floating="float-end">
+      <Button onClick={onAddTask} floating="float-end">
         Add Task
       </Button>
       <table className="table">
@@ -30,6 +45,10 @@ function App() {
               counter={index + 1}
               name={data}
               status="x"
+              onEdit={() => onEdit(index)}
+              onDelete={() => onDelete(index)}
+              editable={editable}
+              onChange={() => onChange(data, data)}
             ></RowTable>
           ))}
         </tbody>

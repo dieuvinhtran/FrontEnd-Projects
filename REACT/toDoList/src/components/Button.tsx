@@ -1,12 +1,13 @@
 interface Props {
+  id?: string;
   children: string;
   floating?: string;
   onClick: () => void;
 }
 
-const Button = ({ children, floating = "", onClick }: Props) => {
+const Button = ({ id, children, floating = "", onClick }: Props) => {
   return (
-    <button className={"btn btn-primary " + floating} onClick={onClick}>
+    <button id={id} className={"btn btn-primary " + floating} onClick={onClick}>
       {children}
     </button>
   );
