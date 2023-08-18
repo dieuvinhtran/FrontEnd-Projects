@@ -1,4 +1,5 @@
 import Button from "../Button";
+import StatusButton from "./StatusButton";
 
 interface Props {
   editable: boolean;
@@ -7,7 +8,8 @@ interface Props {
   status: string;
   onEdit: () => void;
   onDelete: () => void;
-  onChange: () => void;
+  onSave: () => void;
+  onChange: (event: React.FormEvent<HTMLInputElement>) => void;
 }
 
 const RowTable = ({
@@ -17,12 +19,14 @@ const RowTable = ({
   status,
   onEdit,
   onDelete,
+  onSave,
   onChange,
 }: Props) => {
   return (
     <>
       <tr>
         <th scope="row">{counter}</th>
+        {/** changes between input field if editable is true and a normal td */}
         {editable ? (
           <td>
             <input value={name} onChange={onChange}></input>
@@ -30,9 +34,15 @@ const RowTable = ({
         ) : (
           <td>{name}</td>
         )}
-        <td>{status}</td>
+        <td>
+          <StatusButton status={status} enable={editable}></StatusButton>
+        </td>
         <td className="text-center">
-          <Button onClick={onEdit}>Edit</Button>
+          {editable ? (
+            <Button onClick={onSave}>Save</Button>
+          ) : (
+            <Button onClick={onEdit}>Edit</Button>
+          )}
         </td>
         <td className="text-center">
           <Button onClick={onDelete}>Delete</Button>
