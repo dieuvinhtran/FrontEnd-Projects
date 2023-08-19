@@ -1,7 +1,7 @@
 enum Status {
-  toDo = "ToDo",
-  inWork = "InWork",
-  finished = "Finished",
+  toDo = "ToDo" as any,
+  inWork = "InWork" as any,
+  finished = "Finished" as any,
 }
 
 export default Status;

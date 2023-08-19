@@ -1,18 +1,22 @@
 import Button from "../Button";
+import Status from "../Status";
 import StatusButton from "./StatusButton";
 
 interface Props {
+  id: number;
   editable: boolean;
   counter: number;
   name: string;
-  status: string;
+  status: Status;
   onEdit: () => void;
   onDelete: () => void;
   onSave: () => void;
   onChange: (event: React.FormEvent<HTMLInputElement>) => void;
+  onSelectionChange: (event: React.FormEvent<HTMLOptionElement>) => void;
 }
 
 const RowTable = ({
+  id,
   editable,
   counter,
   name,
@@ -21,6 +25,7 @@ const RowTable = ({
   onDelete,
   onSave,
   onChange,
+  onSelectionChange,
 }: Props) => {
   return (
     <>
@@ -35,7 +40,12 @@ const RowTable = ({
           <td>{name}</td>
         )}
         <td>
-          <StatusButton status={status} enable={editable}></StatusButton>
+          <StatusButton
+            id={id}
+            status={status}
+            enable={editable}
+            onSelectionChange={onSelectionChange}
+          ></StatusButton>
         </td>
         <td className="text-center">
           {editable ? (

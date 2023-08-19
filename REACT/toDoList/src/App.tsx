@@ -57,7 +57,6 @@ function App() {
   };
 
   //saves the task's name in state array
-  //TODO: add change to status and update
   const onChange = (
     event: React.FormEvent<HTMLInputElement>,
     index: number
@@ -65,6 +64,18 @@ function App() {
     let taskNames = taskName;
     taskNames[index] = event.currentTarget.value;
     setTaskName([...taskNames]);
+  };
+
+  const onSelectionChange = (
+    event: React.FormEvent<HTMLOptionElement>,
+    index: number
+  ) => {
+    console.log("onselectionchange");
+    let statuses = status;
+    console.log(event.currentTarget.value as keyof typeof Status);
+    statuses[index] = Status[event.currentTarget.value as keyof typeof Status];
+    console.log(statuses[index]);
+    setStatus([...statuses]);
   };
 
   return (
@@ -78,6 +89,7 @@ function App() {
         <tbody>
           {row.map((data, index) => (
             <RowTable
+              id={index}
               key={data + " " + index + 1}
               counter={index + 1}
               name={taskName[index]}
@@ -89,6 +101,11 @@ function App() {
               onChange={(event: React.FormEvent<HTMLInputElement>) =>
                 onChange(event, index)
               }
+              onSelectionChange={(
+                event: React.FormEvent<HTMLOptionElement>
+              ) => {
+                onSelectionChange(event, index);
+              }}
             ></RowTable>
           ))}
         </tbody>
