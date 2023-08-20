@@ -1,0 +1,16 @@
+.main-content{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.own-line{
+    flex-grow: 1;
+    width:100%;
+}
+
+.input-container{
+    margin-top: 1em;
+    width: 80%;
+}
