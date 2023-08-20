@@ -12,7 +12,7 @@ interface Props {
   onDelete: () => void;
   onSave: () => void;
   onChange: (event: React.FormEvent<HTMLInputElement>) => void;
-  onSelectionChange: (event: React.FormEvent<HTMLOptionElement>) => void;
+  onSelectionChange: (event: React.FormEvent<HTMLSelectElement>) => void;
 }
 
 const RowTable = ({

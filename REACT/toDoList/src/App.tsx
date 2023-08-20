@@ -21,7 +21,8 @@ function App() {
 
   const onAddTask = () => {
     setCounter(counter + 1);
-    //deconstructing the array and add one more task
+
+    //init important values for the elements in the table
     setRow([...row, "Task " + counter]);
     setEditable([...editable, false]);
     setTaskName([...taskName, ""]);
@@ -40,12 +41,16 @@ function App() {
     //get ref to arrays and removes the element at the index
     let rows = row;
     let taskNames = taskName;
+    let statuses = status;
+
     rows.splice(index, 1);
     taskNames.splice(index, 1);
+    statuses.splice(index, 1);
 
     //set the state to the modified array
     setRow([...rows]);
     setTaskName([...taskNames]);
+    setStatus([...statuses]);
   };
 
   const onSave = (index: number) => {
@@ -66,15 +71,13 @@ function App() {
     setTaskName([...taskNames]);
   };
 
+  //saves the state of all the statuses
   const onSelectionChange = (
-    event: React.FormEvent<HTMLOptionElement>,
+    event: React.FormEvent<HTMLSelectElement>,
     index: number
   ) => {
-    console.log("onselectionchange");
     let statuses = status;
-    console.log(event.currentTarget.value as keyof typeof Status);
-    statuses[index] = Status[event.currentTarget.value as keyof typeof Status];
-    console.log(statuses[index]);
+    statuses[index] = event.currentTarget.value as unknown as Status;
     setStatus([...statuses]);
   };
 
@@ -102,7 +105,7 @@ function App() {
                 onChange(event, index)
               }
               onSelectionChange={(
-                event: React.FormEvent<HTMLOptionElement>
+                event: React.FormEvent<HTMLSelectElement>
               ) => {
                 onSelectionChange(event, index);
               }}
