@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!--String Interpolation-->
+  <h1>{{headers[0]}}</h1>
+  {{title}}
+  {{randomNumber > 5? "Is bigger 5 = " + randomNumber : "Is less than 5 = " + randomNumber }}
+  
+  <!--Property binding-->
+  <h1>{{headers[1]}}</h1>
+  <h3 [innerHTML]="imgTitle"></h3>
+  <img [src]="imgSrc" width="40%" height="30%">
+
+  <!--Two way binding-->
+  <h1>{{headers[2]}}</h1>
+  <input [(ngModel)]="inputExample[0]" />
+  <input [(ngModel)]="inputExample[1]" />
+  <input [(ngModel)]="inputExample[2]" />
+  <p>{{inputExample[0] + " " + inputExample[1] + " " +inputExample[2]}}</p>
+
+  <!--Template reference-->
+  <h1>{{headers[3]}}</h1>
+  <input type="text" #pokemonName>
+  <button (click)="handleClick(pokemonName)">Click Me!</button>
+
+  <!--ngClass-->
+  <h1>{{headers[4]}}</h1>
+  <table>
+    <thead>
+      <th>Person</th>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Height</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let person of persons; let i = index">
+        <td [class.existence]="person.isExisting">{{person.name}}</td>
+        <td>{{person.name}}</td>
+        <td>{{person.age}}</td>
+        <td>{{person.height}}</td>
+      </tr>
+      <!--old school-->
+      <tr *ngFor="let person of persons; let i = index">
+        <td [ngClass]="{'existence' : person.isExisting}">{{person.name}}</td>
+        <td>{{person.name}}</td>
+        <td>{{person.age}}</td>
+        <td>{{person.height}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+</body>
+</html>
