@@ -8,6 +8,12 @@ interface Person {
   isExisting: boolean;
 }
 
+interface Pokemon {
+  id: number;
+  name: string;
+  type: string;
+}
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -28,6 +34,10 @@ export class AppComponent {
 
   persons: Person[];
 
+  pokemonName2: string;
+
+  pokemonList: Pokemon[];
+
   constructor() {
     this.headers = [
       'String Interpolation',
@@ -35,6 +45,8 @@ export class AppComponent {
       'Two way binding',
       'Template reference',
       'ngClass',
+      'ngIf',
+      'ngFor',
     ];
 
     //string interpolation
@@ -58,9 +70,23 @@ export class AppComponent {
       { name: 'hans', age: 20, height: 80, isExisting: true },
       { name: 'laura', age: 5, height: 1, isExisting: true },
     ];
+
+    //ngIf
+    this.pokemonName2 = '';
+
+    //ngFor
+    this.pokemonList = [
+      { id: 1, name: 'pikachu', type: 'electric' },
+      { id: 2, name: 'pichu', type: 'electric' },
+    ];
   }
 
   handleClick(value: any) {
     console.log(value.value);
+  }
+
+  pokemonNameInputChange(event: any) {
+    this.pokemonName2 = event?.target.value;
+    console.log(this.pokemonName2);
   }
 }

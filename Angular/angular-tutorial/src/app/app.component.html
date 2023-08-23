@@ -54,5 +54,30 @@
     </tbody>
   </table>
 
+  <h1>{{headers[5]}}</h1>
+  <input type="text" [value]="pokemonName2" (input)="pokemonNameInputChange($event)">
+
+  <div *ngIf="!pokemonName2">
+    Nothing found ...
+  </div>
+
+  <ng-container *ngIf="pokemonName2.length; then showConsole; else nothingFound"></ng-container>
+
+  <ng-template #showConsole>
+    <p>Something was found ... look console</p>
+  </ng-template>
+
+  <ng-template #nothingFound>
+    <p>Nothing found ...</p>
+  </ng-template>
+
+
+  <h1>{{headers[6]}}</h1>
+  <div *ngFor="let pokemon of pokemonList">
+    <p>{{pokemon.id}}</p>
+    <p>{{pokemon.name}}</p>
+    <p>{{pokemon.type}}</p>
+  </div>
+
 </body>
 </html>
