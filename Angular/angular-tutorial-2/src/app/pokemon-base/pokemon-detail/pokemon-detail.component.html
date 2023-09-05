@@ -1,0 +1,15 @@
+<table>
+    <thead>
+        <th>Index</th>
+        <th>Name</th>
+        <th>Type</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let pokemon of detailList; let i = index">
+            <td [ngClass]="{'is-cool' : pokemon.isCool}">{{pokemon.id}}</td>
+            <td [ngClass]="{'is-cool' : pokemon.isCool}">{{pokemon.name}}</td>
+            <td [ngClass]="{'is-cool' : pokemon.isCool}">{{pokemon.type}}</td>
+            <button (click)="onRemove(pokemon)">Remove Pokemon</button>
+        </tr>
+    </tbody>
+</table>

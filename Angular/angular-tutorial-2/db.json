@@ -1,0 +1,5 @@
+{
+    "pokemon" : [{ "id": 1, "name": "Pichu", "type": "Electric", "isCool": true },
+    { "id": 2, "name": "Pikachu", "type": "Electric", "isCool": false },
+    { "id": 3, "name": "Raichu", "type": "Electric", "isCool": false }]
+}
