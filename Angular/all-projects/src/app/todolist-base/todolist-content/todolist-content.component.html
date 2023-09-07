@@ -1,0 +1,37 @@
+<h1>ToDoList</h1>
+<button class="btn btn-dark float-end" (click)="onAdd()">Add Task</button>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Task Name</th>
+      <th scope="col">Status</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Remove</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of content; let i = index;">
+      <th scope="row" class="align-middle">{{item.id}}</th>
+      <td class="align-middle">
+        <span [hidden]="editableList[i]">{{item.taskName}}</span>
+        <input type="text" [hidden]="!editableList[i]" [(ngModel)]="newTaskName">
+      </td>
+      <td class="align-middle">
+        <span [hidden]="editableList[i]">{{item.taskStatus}}</span>
+        <select name="newStatus" [(ngModel)]="newStatus" [hidden]="!editableList[i]">
+          <option *ngFor="let type of statusTypes">
+            {{type}}
+          </option>
+        </select>
+      </td>
+      <td>
+        <button [hidden]="!editableList[i]" class="btn btn-success" (click)="onSave(item, newTaskName, newStatus)">Save</button>
+        <button [hidden]="editableList[i]" class="btn btn-success" (click)="onEdit(item)">Edit</button>
+      </td>
+      <td><button class="btn btn-success" (click)="onRemove(item)">Remove</button></td>
+    </tr>
+  </tbody>
+</table>
+    

@@ -1,0 +1,7 @@
+<todolist-content 
+[content]="taskList"
+[editableList]="editableTasksList"
+(edit)="onEditTask($event)"
+(save)="onSaveTask($event)"
+(remove)="onRemoveTask($event)" 
+(add)="onAddTask()"></todolist-content>
