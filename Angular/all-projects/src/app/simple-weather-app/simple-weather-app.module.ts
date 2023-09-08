@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SimpleWeatherAppContentComponent } from './simple-weather-app-content/simple-weather-app-content.component';
 import { SimpleWeatherAppLogicComponent } from './simple-weather-app-logic/simple-weather-app-logic.component';
 import { RouterModule, Routes } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -16,6 +17,6 @@ const routes: Routes = [
     SimpleWeatherAppContentComponent,
     SimpleWeatherAppLogicComponent,
   ],
-  imports: [CommonModule, RouterModule.forChild(routes)],
+  imports: [CommonModule, RouterModule.forChild(routes), FormsModule],
 })
 export class SimpleWeatherAppModule {}

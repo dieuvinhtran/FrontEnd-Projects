@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { BadRouteComponent } from './bad-route/bad-route.component';
 import { TodolistBaseModule } from './todolist-base/todolist-base.module';
 import { SimpleWeatherAppModule } from './simple-weather-app/simple-weather-app.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, BadRouteComponent],
@@ -16,6 +17,7 @@ import { SimpleWeatherAppModule } from './simple-weather-app/simple-weather-app.
     TodolistBaseModule,
     SimpleWeatherAppModule,
     AppRoutingModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
