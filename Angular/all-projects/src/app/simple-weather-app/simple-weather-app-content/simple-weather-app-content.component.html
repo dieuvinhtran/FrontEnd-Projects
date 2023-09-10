@@ -1,22 +1,21 @@
 <h1>Simple Weather App</h1>
 
-
-<div class="input-group mb-3 input-field-border">
-  <div class="input-group-prepend input-field-prepend">
-    <span class="input-group-text" id="inputGroup-sizing-default">Longitude</span>
+<div class="flex-grouping">
+  <div class="input-group mb-3 input-field-border">
+    <div class="input-group-prepend input-field-prepend">
+      <span class="input-group-text" id="inputGroup-sizing-default">Longitude</span>
+    </div>
+    <input [(ngModel)]="longitude" type="number" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Longitude">
   </div>
-  <input [(ngModel)]="longitude" type="number" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Longitude">
-</div>
-
-<div class="input-group mb-3 input-field-border">
-  <div class="input-group-prepend input-field-prepend">
-    <span class="input-group-text" id="inputGroup-sizing-default">Latitude</span>
-  </div>
-  <input [(ngModel)]="latitude" type="number" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Latitude">
-</div>
-
-<button (click)="onGetData({longitude: longitude, latitude: latitude})" class="btn btn-info">Fetch Data</button>
-
-<div>
   
+  <div class="input-group mb-3 input-field-border">
+    <div class="input-group-prepend input-field-prepend">
+      <span class="input-group-text" id="inputGroup-sizing-default">Latitude</span>
+    </div>
+    <input [(ngModel)]="latitude" type="number" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Latitude">
+  </div>
+  
+  <button (click)="onGetData(longitude, latitude)" class="btn btn-info btn-round">Fetch Data</button>
+  
+  <ng-container #weatherCardComponent></ng-container>
 </div>

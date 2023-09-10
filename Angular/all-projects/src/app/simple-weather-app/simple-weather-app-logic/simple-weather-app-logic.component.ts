@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
-import { WeatherReq } from 'src/app/model/WeatherReq';
+import { WeatherApiData, WeatherReq } from 'src/app/model/Weather';
 import { WeatherApiService } from 'src/app/services/weather-api.service';
 
 @Component({
@@ -9,15 +8,18 @@ import { WeatherApiService } from 'src/app/services/weather-api.service';
   styleUrls: ['./simple-weather-app-logic.component.css'],
 })
 export class SimpleWeatherAppLogicComponent {
-  weatherData!: Observable<any>;
+  weatherData!: WeatherApiData;
 
   constructor(private weatherService: WeatherApiService) {}
 
   onGetData(weatherReq: WeatherReq) {
-    this.weatherService
-      .getWeatherData(weatherReq)
-      .subscribe((data: Observable<any>) => {
-        this.weatherData = data;
-      });
+    this.weatherService.getWeatherData(weatherReq).subscribe((data) => {
+      this.weatherData = data;
+      weatherReq.callback(
+        this.weatherData.location.name,
+        this.weatherData.current.condition.icon,
+        this.weatherData.current.temp_c
+      );
+    });
   }
 }

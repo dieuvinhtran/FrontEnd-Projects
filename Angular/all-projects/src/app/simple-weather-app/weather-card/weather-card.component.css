@@ -1,0 +1,27 @@
+.weather-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(147, 236, 206);
+    margin: 20px;
+}
+
+.card-header{
+    width:100%;
+}
+
+.weather-header{
+    text-align: center;
+    margin: 10px;
+}
+
+.border-bottom{
+    border-bottom: 2px solid black;
+}
+
+.weather-card{
+    width: 15em;
+    height: 14em;
+    border: 2px solid black;
+    border-radius: 15px;
+}
